@@ -5,6 +5,9 @@ const nextConfig = {
     remotePatterns: [
       {
         hostname: "ist-363-restaurants.local",
+      },
+      {
+        hostname: "restaurants.ist363.xyz",
       }
     ]
   }

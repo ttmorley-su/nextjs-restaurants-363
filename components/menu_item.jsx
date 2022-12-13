@@ -2,14 +2,14 @@ import Image from "next/image";
 import styles from "./menu_item.module.scss";
 
 export default function MenuItem({ title, description, price, image }) {
-    return (
+	return (
 		<article className={styles.item}>
-			<Image 
+			<Image
 				className={styles.image}
 				src={image.mediaItemUrl}
-				alt={image.altText} 
-				width={image.mediaDetails.width} 
-				height={image.mediaDetails.height} 
+				alt={image.altText}
+				width={image.mediaDetails.width}
+				height={image.mediaDetails.height}
 			/>
 			<div className={styles.content}>
 				<h3 className={styles.title}>{title}</h3>
@@ -19,4 +19,3 @@ export default function MenuItem({ title, description, price, image }) {
 		</article>
 	);
 }
-

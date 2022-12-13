@@ -1,5 +1,6 @@
 .item {
 	display: flex;
+	margin-bottom: 1rem;
 	gap: 1rem;
 	align-items: center;
 }
@@ -23,9 +24,9 @@
 }
 
 .price {
-	opacity: 0.6;
 	margin: 0;
 	margin-bottom: 0.5rem;
+	opacity: 0.6;
 }
 
 .description {

@@ -1,1 +1,5 @@
+@use "sass:color";
+
 $tint: rgb(70, 185, 1);
+$border: gray;
+$link: color.adjust($tint, $lightness: -10%);

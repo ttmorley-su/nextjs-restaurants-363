@@ -1,75 +1,78 @@
 @use "../styles/colors";
-
-.item {}
+@use "../styles/mixins";
 
 [data-view-mode="grid"] {
-  .item {
-    border: solid 1px #000;
-  }
+	.item {
+		border: solid 1px colors.$border;
+	}
+
+	.content {
+		padding: 1rem;
+	}
 }
 
 [data-view-mode="list"] {
-  .item {
-    border-bottom: solid 1px #000;
+	.item {
+		border-bottom: solid 1px colors.$border;
 
-    &:last-child {
-      border-bottom: none;
-    }
+		&:last-child {
+			border-bottom: none;
+		}
 
-    @media screen and (min-width: 48rem) {
-      padding: 1rem 0;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      gap: 1rem;
+		@include mixins.tablet {
+			padding: 1rem 0;
+			display: flex;
+			align-items: center;
+			width: 100%;
+			gap: 1rem;
 
-      .content {
-        padding: 1.5rem 0;
-        flex: 1 1 auto;
-        align-items: center;
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: 1fr 2fr auto;
-      }
-    }
-  }
+			.content {
+				padding: 1.5rem 0;
+				flex: 1 1 auto;
+				align-items: center;
+				display: grid;
+				gap: 1rem;
+				grid-template-columns: 1fr 2fr auto;
+			}
+		}
+	}
+
+	.content {
+		padding: 1rem 0;
+
+		@include mixins.tablet {
+			padding: 1rem;
+		}
+	}
 }
 
 .title {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
+	margin: 0;
+	font-size: 1.25rem;
+	font-weight: 600;
 }
 
 .category {
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: colors.$tint;
-  border-radius: 0.5rem;
+	margin-bottom: 0.5rem;
+	@include mixins.category-label;
 }
 
 .desc {
-  opacity: 0.8;
+	opacity: 0.8;
 }
 
 .image {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  flex: 0 1 150px;
+	position: relative;
+	aspect-ratio: 16 / 9;
+	flex: 0 1 150px;
 
-  img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-}
-
-.content {
-  padding: 1rem;
+	img {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
 }

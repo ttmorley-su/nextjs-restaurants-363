@@ -2,41 +2,41 @@
 @use "../styles/fonts";
 
 .button {
-  --btn-background: transparent;
-  --btn-color: #fff;
+	--btn-background: transparent;
+	--btn-color: #fff;
 
-  display: inline-block;
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  font: inherit;
-  text-decoration: none;
-  text-transform: uppercase;
-  cursor: pointer;
+	display: inline-block;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	font: inherit;
+	text-decoration: none;
+	text-transform: uppercase;
+	cursor: pointer;
 
-  padding: 1rem 1rem;
-  color: var(--btn-color);
-  background-color: var(--btn-background);
-  border: solid 1px var(--btn-background);
+	padding: 1rem 1rem;
+	color: var(--btn-color);
+	background-color: var(--btn-background);
+	border: solid 1px var(--btn-background);
 
-  &.outline {
-    border-color: var(--btn-color);
-  }
+	&.outline {
+		border-color: var(--btn-color);
+	}
 
-  &.filled {
-    background-color: var(--btn-background);
-    border-color: var(--btn-background);
-  }
+	&.filled {
+		background-color: var(--btn-background);
+		border-color: var(--btn-background);
+	}
 }
 
 .primary {
-  --btn-background: #{colors.$tint};
-  --btn-color: #000;
-  font-weight: 700;
-  font-family: fonts.$secondary;
+	--btn-background: #{colors.$tint};
+	--btn-color: #000;
+	font-weight: 700;
+	font-family: fonts.$secondary;
 }
 
 .secondary {
-  --btn-background: rgba(121, 121, 121, 0.5);
-  --btn-color: #fff;
+	--btn-background: rgba(121, 121, 121, 0.5);
+	--btn-color: #fff;
 }

@@ -1,21 +1,26 @@
 import Button from "@components/button";
-import Section from "@components/section";
 import RestaurantItem from "@components/restaurant_item";
+import RestaurantItemsList from "@components/restaurant_items_list";
+import Section from "@components/section";
+import { getAllCategories, getAllRestaurants } from "@lib/api";
 import Head from "next/head";
 import { useState } from "react";
-import {getAllCategories, getAllRestaurants} from "@lib/api";
-import RestaurantItemsList from "@components/restaurant_items_list";
 import styles from "./index.module.scss";
 
-import { Grid16Filled, List16Filled, ChevronDown16Filled } from "@fluentui/react-icons";
 import Showcase from "@components/showcase";
+import {
+	ChevronDown16Filled,
+	Grid16Filled,
+	List16Filled,
+} from "@fluentui/react-icons";
 
 const VIEW_MODE_NAME = "view-mode";
 
-
 function containsCategory(category, item) {
 	let data = item.node.restaurantTypes?.edges;
-	if (!data) return false;
+	if (!data) {
+		return false;
+	}
 	for (let i = 0, length = data.length; i < length; i++) {
 		if (data[i].node?.name === category) {
 			return true;
@@ -32,7 +37,7 @@ export async function getStaticProps() {
 			restaurants,
 			categories,
 		},
-	}
+	};
 }
 
 export default function Home({ restaurants: allRestaurants, categories }) {
@@ -59,36 +64,62 @@ export default function Home({ restaurants: allRestaurants, categories }) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Showcase image="/hero-image.jpg">
-				<h1>A guide to the best eating spots in Syracuse.</h1>
-				<p>With hundreds of restaurants located with in the 315, there really is a little something for all tastes.</p>
-				<Button href="#restaurants" kind="primary">View Restaurants</Button>
+				<h1 className={styles.heroTitle}>
+					A guide to the best eating spots in Syracuse.
+				</h1>
+				<p className={styles.heroSubtitle}>
+					With hundreds of restaurants located with in the 315, there really is
+					a little something for all tastes.
+				</p>
+				<Button href="#restaurants" kind="primary">
+					View Restaurants
+				</Button>
 			</Showcase>
 			<Section id="restaurants">
 				<div className={styles.toolbar}>
 					<label className={styles.filters} htmlFor="categories-filter">
 						<span>Filters</span>
 						<div className={styles.select}>
-							<select name="categories-filter" id="categories-filter" onChange={handleFilterChange}>
-								{categories.map((name) => <option key={name} value={name}>{name}</option>)}
+							<select
+								name="categories-filter"
+								id="categories-filter"
+								onChange={handleFilterChange}
+							>
+								{categories.map((name) => (
+									<option key={name} value={name}>
+										{name}
+									</option>
+								))}
 							</select>
-							<ChevronDown16Filled></ChevronDown16Filled>
+							<ChevronDown16Filled />
 						</div>
 					</label>
 					<div className={styles.modes}>
-						<ViewModeItem value="grid" onChange={handleViewModeChange} checked={viewMode === "grid"}>
-							<Grid16Filled></Grid16Filled>
+						<ViewModeItem
+							value="grid"
+							onChange={handleViewModeChange}
+							checked={viewMode === "grid"}
+						>
+							<Grid16Filled />
 						</ViewModeItem>
-						<ViewModeItem value="list" onChange={handleViewModeChange} checked={viewMode === "list"}>
-							<List16Filled></List16Filled>
+						<ViewModeItem
+							value="list"
+							onChange={handleViewModeChange}
+							checked={viewMode === "list"}
+						>
+							<List16Filled />
 						</ViewModeItem>
 					</div>
 				</div>
-				{restaurants.length ?
+				{restaurants.length ? (
 					<RestaurantItemsList mode={viewMode}>
-						{restaurants.map((data) => <RestaurantItem key={data.node.id} data={data} />)}
+						{restaurants.map((data) => (
+							<RestaurantItem key={data.node.id} data={data} />
+						))}
 					</RestaurantItemsList>
-					: <div>No Results</div>
-				}
+				) : (
+					<div>No Results</div>
+				)}
 			</Section>
 		</>
 	);
@@ -96,10 +127,17 @@ export default function Home({ restaurants: allRestaurants, categories }) {
 
 function ViewModeItem({ value, children, checked, onChange }) {
 	const name = VIEW_MODE_NAME;
-	const id = value + "-" + name;
+	const id = `${value}-${name}`;
 	return (
 		<label htmlFor={id} className={styles.mode}>
-			<input type="radio" name={name} id={id} value={value} onChange={onChange} checked={checked} />
+			<input
+				type="radio"
+				name={name}
+				id={id}
+				value={value}
+				onChange={onChange}
+				checked={checked}
+			/>
 			{children && children}
 		</label>
 	);

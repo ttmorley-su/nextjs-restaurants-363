@@ -1,41 +1,56 @@
+@use "../../styles/mixins";
+@use "../../styles/colors";
+
 .layout {
-  display: grid;
+	display: grid;
 
-  @media screen and (min-width: 48rem) {
-    grid-template-columns: 3fr 1fr;
-    gap: 2rem;
+	@include mixins.tablet {
+		grid-template-columns: 3fr 1fr;
+		gap: 2rem;
 
-    aside {
-      padding-top: 1rem;
-    }
-  }
+		aside {
+			padding-top: 1rem;
+		}
+	}
 }
 
 .buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 }
 
 .title {
-  font-size: 1.5rem;
+	font-size: 1.75rem;
+	margin-top: 0.5rem;
 }
 
 .category {
-
+	@include mixins.category-label;
 }
 
 .hour {
-  display: flex;
-  p {
-    flex: 1;
-  }
+	display: flex;
+
+	p {
+		line-height: 2.5rem;
+		flex: 1;
+		margin: 0 0;
+	}
 }
 
 .map {
-  border: 0;
-  aspect-ratio: 600 / 450;
-  max-width: 100%;
-  height: 100%;
+	border: 0;
+	aspect-ratio: 600 / 450;
+	max-width: 100%;
+	height: 100%;
 }
 
+.link {
+	text-decoration: none;
+	color: colors.$link;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
