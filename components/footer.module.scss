@@ -1,0 +1,7 @@
+@use "../styles/colors";
+
+.footer {
+  text-align: center;
+  background-color: colors.$tint;
+  padding: 1rem 0;
+}

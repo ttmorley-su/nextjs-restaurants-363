@@ -1,0 +1,22 @@
+{
+  "name": "nextjs-ist363-restaurants",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fluentui/react-icons": "^2.0.190",
+    "next": "13.0.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "classnames": "^2.3.2",
+    "rome": "^10.0.1",
+    "sass": "^1.56.1"
+  }
+}
